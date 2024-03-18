@@ -1,20 +1,15 @@
-import { ReactNode } from "react";
+
 import AdminDashboard from "../pages/admin/AdminDashboard";
 import CreateAdmin from "../pages/admin/CreateAdmin";
 import CreateFaculty from "../pages/admin/CreateFaculty";
 import CreateStudents from "../pages/admin/CreateStudents";
-import { NavLink } from "react-router-dom";
 
-type TRoute = {
-  path: string;
-  element: ReactNode;
-};
 
-type TSideberItem = {
-  key: string;
-  label: ReactNode;
-  children?: TSideberItem[];
-};
+// type TRoute = {
+//   path: string;
+//   element: ReactNode;
+// };
+
 
 export const adminPaths2 = [
   {
@@ -46,7 +41,7 @@ export const adminPaths2 = [
 
 // Admin sideber item
 
-export const adminSideberItem = adminPaths2.reduce(
+/* export const adminSideberItem = adminPaths2.reduce(
   (acc: TSideberItem[], item) => {
     if (item.path && item.element) {
       acc.push({
@@ -67,27 +62,27 @@ export const adminSideberItem = adminPaths2.reduce(
     return acc;
   },
   []
-);
+); */
 
 //* Programitcal way
 
-export const adminRoutes = adminPaths2.reduce((acc: TRoute[], item) => {
-  if (item.path && item.element) {
-    acc.push({
-      path: item.path,
-      element: item.element,
-    });
-  }
-  if (item.children) {
-    item.children.forEach((child) => {
-      acc.push({
-        path: child.path,
-        element: child.element,
-      });
-    });
-  }
-  return acc;
-}, []);
+// export const adminRoutes = adminPaths2.reduce((acc: TRoute[], item) => {
+//   if (item.path && item.element) {
+//     acc.push({
+//       path: item.path,
+//       element: item.element,
+//     });
+//   }
+//   if (item.children) {
+//     item.children.forEach((child) => {
+//       acc.push({
+//         path: child.path,
+//         element: child.element,
+//       });
+//     });
+//   }
+//   return acc;
+// }, []);
 
 //! Hard coded way
 
