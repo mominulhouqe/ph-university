@@ -1,13 +1,13 @@
 import type { MenuProps } from "antd";
 import { Layout, Menu } from "antd";
-import { Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Header, Content, Sider } = Layout;
 
 const items: MenuProps["items"] = [
   {
-    key: "1",
-    label: "Dashboard",
+    key: "Dashboard",
+    label: <NavLink to="/admin/dashboard">Dashboard</NavLink>,
   },
   {
     key: "2",
@@ -18,12 +18,16 @@ const items: MenuProps["items"] = [
     label: "User Management",
     children: [
       {
-        key: "a1",
-        label: "Create Admin",
+        key: "create-admin",
+        label: <NavLink to="/admin/create-admin">Create Admin</NavLink>,
       },
       {
-        key: "a2",
-        label: "Create Student",
+        key: "create-faculty",
+        label: <NavLink to="/admin/create-faculty">Create Faculty</NavLink>,
+      },
+      {
+        key: "create-student",
+        label: <NavLink to="/admin/create-student">Create Student</NavLink>,
       },
     ],
   },
@@ -46,7 +50,7 @@ const MainLayout = () => {
           style={{
             color: "white",
             textAlign: "center",
-            height:"4rem",
+            height: "4rem",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
@@ -75,12 +79,9 @@ const MainLayout = () => {
               textAlign: "center",
             }}
           >
-           <Outlet />
+            <Outlet />
           </div>
         </Content>
-        <Footer style={{ textAlign: "center" }}>
-          Ant Design ©{new Date().getFullYear()} Created by Ant UED
-        </Footer>
       </Layout>
     </Layout>
   );
