@@ -2,8 +2,36 @@ import { Layout, Menu } from "antd";
 const { Sider } = Layout;
 import { sidebarItemsGenerators } from "../../utils/sidebarItemsGenerators";
 import { adminPaths2 } from "../../routes/Admin.routes";
+import { facultyPaths } from "../../routes/faculty.routes";
+import { studentPaths } from "../../routes/student.routes";
 
 const Sidebar = () => {
+  const role = "faculty";
+  const userRole = {
+    ADMIN: "admin",
+    FACULTY: "faculty",
+    STUDENT: "student",
+  };
+
+  let sideberItems;
+  switch (role) {
+    case userRole.ADMIN:
+      sideberItems = sidebarItemsGenerators(adminPaths2, "admin");
+
+      break;
+    case userRole.FACULTY:
+      sideberItems = sidebarItemsGenerators(facultyPaths, "faculty");
+
+      break;
+    case userRole.STUDENT:
+      sideberItems = sidebarItemsGenerators(studentPaths, "student");
+
+      break;
+
+    default:
+      break;
+  }
+
   return (
     <div>
       <Sider
@@ -32,7 +60,7 @@ const Sidebar = () => {
           theme="dark"
           mode="inline"
           defaultSelectedKeys={["4"]}
-          items={sidebarItemsGenerators(adminPaths2, "admin")}
+          items={sideberItems}
         />
       </Sider>
     </div>
